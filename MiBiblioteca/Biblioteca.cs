@@ -8,7 +8,7 @@ namespace MiBiblioteca
     {
         private List<Libro> libros;
         private List<Lector> lectores;
-
+        
         public Biblioteca()
         {
             this.libros = new List<Libro>();
@@ -83,6 +83,7 @@ namespace MiBiblioteca
             resultado = true;
             return resultado;
         }
+
         public void listarLectores()
         {
             foreach (var lector in lectores)
@@ -93,18 +94,30 @@ namespace MiBiblioteca
 
         public string prestarLibro(string titulo, string dni)
         {
-
             Libro libro = buscarLibro(titulo);
             Lector lector = buscarLector(dni);
 
             if (libro == null) { return "LIBRO INEXISTENTE"; };
             if (lector == null) { return "LECTOR INEXISTENTE"; };
+            if (lector.Libros.Count > 2) { return "TOPE DE PRESTAMO ALCANZADO"; };
 
-            return "pepe";
-
+            this.libros.Remove(libro);
+            lector.agregarLibro(libro);
+            return "PRESTAMO EXITOSO";
         }
 
+        public string devolucionLibro(string titulo, string dni)
+        {
+            Lector lector = buscarLector(dni);
+            if (lector == null) { return "LECTOR INEXISTENTE"; };
+            Libro libro = lector.devolverLibro(titulo);
+            if (libro == null) { return "LIBRO INEXISTENTE"; };
 
+            libros.Add(libro);
+            lector.eliminarLibro(libro);
+
+            return "LIBRO DEVUELTO CON EXITO";
+        }
 
     }
 }

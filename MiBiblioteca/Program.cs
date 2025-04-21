@@ -36,9 +36,27 @@ namespace MiBiblioteca
             Console.WriteLine(libroInexistente); 
             string lectorInexistente = biblioteca.prestarLibro("Libro8", "31558645");
             Console.WriteLine(lectorInexistente);
+            string prestamoExitoso = biblioteca.prestarLibro("Libro8", "31558644");
+            Console.WriteLine(prestamoExitoso);
+            string prestamoExitoso2 = biblioteca.prestarLibro("Libro7", "31558644");
+            Console.WriteLine(prestamoExitoso2);
+            string prestamoExitoso3 = biblioteca.prestarLibro("Libro6", "31558644");
+            Console.WriteLine(prestamoExitoso3);
+            string limiteAlcanzado = biblioteca.prestarLibro("Libro4", "31558644");
+            Console.WriteLine(limiteAlcanzado);
 
+            biblioteca.listarLibros();
+            biblioteca.listarLectores();
 
+            string devolucionLibro = biblioteca.devolucionLibro("Libro8", "31558644");
+            Console.WriteLine(devolucionLibro);
+            string devolucionSinExito = biblioteca.devolucionLibro("Libro inexistente", "31558644");
+            Console.WriteLine(devolucionSinExito);
+            string lectorNoRegistrado = biblioteca.devolucionLibro("Libro7", "malDNI");
+            Console.WriteLine(lectorNoRegistrado);
 
+            biblioteca.listarLibros();
+            biblioteca.listarLectores();
         }
     }
 }

@@ -19,6 +19,8 @@ namespace MiBiblioteca
         {
             return titulo;
         }
+
+
         public override string ToString()
         {
             return $"TITULO: {titulo} AUTOR: {autor} EDITORIAL: {editorial}";
