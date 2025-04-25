@@ -15,11 +15,11 @@ namespace MiBiblioteca
             void cargarLibros(int cantidad)
             {
                 int i;
-                bool pude;
+                bool creacionExitosa = false;
                 for (i = 1; i <= cantidad; i++)
                 {
-                    pude = biblioteca.agregarLibro("Libro" + i, "Autor" + i, "Editorial" + i);
-                    if (pude)
+                    creacionExitosa = biblioteca.agregarLibro("Libro" + i, "Autor" + i, "Editorial" + i);
+                    if (creacionExitosa)
                         Console.WriteLine("libro" + i + " agragado correctamente.");
                     else
                         Console.WriteLine("libro" + i + " Ya existe en la biblioteca.");

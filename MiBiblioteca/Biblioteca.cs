@@ -95,10 +95,11 @@ namespace MiBiblioteca
         public string prestarLibro(string titulo, string dni)
         {
             Libro libro = buscarLibro(titulo);
-            Lector lector = buscarLector(dni);
-
             if (libro == null) { return "LIBRO INEXISTENTE"; };
+
+            Lector lector = buscarLector(dni);
             if (lector == null) { return "LECTOR INEXISTENTE"; };
+
             if (lector.Libros.Count > 2) { return "TOPE DE PRESTAMO ALCANZADO"; };
 
             this.libros.Remove(libro);
@@ -110,11 +111,12 @@ namespace MiBiblioteca
         {
             Lector lector = buscarLector(dni);
             if (lector == null) { return "LECTOR INEXISTENTE"; };
+
             Libro libro = lector.devolverLibro(titulo);
             if (libro == null) { return "LIBRO INEXISTENTE"; };
 
-            libros.Add(libro);
             lector.eliminarLibro(libro);
+            libros.Add(libro);
 
             return "LIBRO DEVUELTO CON EXITO";
         }
